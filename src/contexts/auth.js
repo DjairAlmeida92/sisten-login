@@ -7,9 +7,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const userToken = localStorage.getItem("user_token");
-    const usersStorage = localStorage.getItem("users_db");
+    const usersStorage = localStorage.getItem("users_bd");
 
-    if (userToken && localStorage) {
+    if (userToken && usersStorage) {
       const hasUser = JSON.parse(usersStorage)?.filter(
         (user) => user.email === JSON.parse(userToken).email
       );
@@ -54,7 +54,7 @@ export const AuthProvider = ({ children }) => {
       newUser = [{ email, password }];
     }
 
-    localStorage.setItem("users_db", JSON.stringify(newUser));
+    localStorage.setItem("users_bd", JSON.stringify(newUser));
 
     return;
   };
